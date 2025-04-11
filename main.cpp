@@ -27,7 +27,8 @@ long long calculateRecursive(int n)
     vector<long long> a(n + 1, 0);
     a.at(1) = 0;  // Initial condition
     
-    for (int i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++) 
+    {
         a.at(i) = a.at(i - 1) + pow(2, i - 1) - 1;
     }
     
@@ -56,20 +57,27 @@ long long countByGeneration(int n)
     long long count = 0;
     
     // Generate all possible bit strings
+
     long long total = pow(2, n);
-    for (long long i = 0; i < total; i++) {
+    for (long long i = 0; i < total; i++) 
+    {
         // Convert number to binary representation
+
         string bitString;
         long long num = i;
         
         // Ensure the bit string has length n by padding with 0s
-        for (int j = 0; j < n; j++) {
+
+        for (int j = 0; j < n; j++) 
+        {
             bitString = (num % 2 ? "1" : "0") + bitString;
             num /= 2;
         }
         
         // Check if the bit string contains "01"
-        if (contains01(bitString)) {
+
+        if (contains01(bitString)) 
+        {
             count++;
         }
     }
@@ -77,10 +85,12 @@ long long countByGeneration(int n)
     return count;
 }
 
-int main() {
+int main() 
+{
     cout << "Testing recurrence relation for bit strings containing '01'" << endl << endl;
     
     // Create nicely formatted table with column headers
+
     cout << left << setw(5) << "n" 
          << setw(15) << "Recursive" 
          << setw(15) << "Direct Count" 
@@ -89,7 +99,9 @@ int main() {
     cout << setfill('-') << setw(45) << "" << setfill(' ') << endl;
     
     // Test for different values of n
-    for (int n = 1; n <= 10; n++) {
+
+    for (int n = 1; n <= 10; n++) 
+    {
         long long recursive = calculateRecursive(n);
         long long directCount = countByGeneration(n);
         
@@ -100,6 +112,7 @@ int main() {
     }
     
     // Allow user to test specific length
+
     int userInput;
     cout << "\nEnter a length to test (1-20): ";
     cin >> userInput;
